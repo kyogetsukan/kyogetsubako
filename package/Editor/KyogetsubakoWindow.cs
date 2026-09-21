@@ -79,14 +79,14 @@ namespace Kyogetsukan.Kyogetsubako
             side.style.borderRightWidth = 1; side.style.borderRightColor = LINE;
             var sh = new Label("導入済みモジュール"); sh.style.fontSize = 11; sh.style.color = C("#6f7887"); sh.style.marginBottom = 6; sh.style.marginLeft = 6;
             side.Add(sh);
-            _sidebarList = new VisualElement(); _sidebarList.style.flexGrow = 1; side.Add(_sidebarList);
+            _sidebarList = new ScrollView(ScrollViewMode.Vertical); _sidebarList.style.flexGrow = 1; side.Add(_sidebarList);
             var hint = new Label("対応モジュールを取り込むと、ここに自動で並びます。");
             hint.style.fontSize = 11; hint.style.color = C("#5c6572"); hint.style.whiteSpace = WhiteSpace.Normal;
             hint.style.marginTop = 8; hint.style.paddingTop = 8; hint.style.borderTopWidth = 1; hint.style.borderTopColor = LINE;
             side.Add(hint);
             body.Add(side);
 
-            _detail = new VisualElement(); _detail.style.flexGrow = 1;
+            _detail = new ScrollView(ScrollViewMode.Vertical); _detail.style.flexGrow = 1;
             _detail.style.paddingTop = 18; _detail.style.paddingBottom = 18; _detail.style.paddingLeft = 20; _detail.style.paddingRight = 20;
             body.Add(_detail);
             root.Add(body);
