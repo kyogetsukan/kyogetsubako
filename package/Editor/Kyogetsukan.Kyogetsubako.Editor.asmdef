@@ -1,0 +1,12 @@
+{
+  "name": "Kyogetsukan.Kyogetsubako.Editor",
+  "rootNamespace": "Kyogetsukan.Kyogetsubako",
+  "references": [],
+  "includePlatforms": [ "Editor" ],
+  "autoReferenced": true,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
