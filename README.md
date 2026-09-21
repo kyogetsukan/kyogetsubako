@@ -17,7 +17,7 @@ package/                     … VPM パッケージ本体（配布されるの�
   README.md
 .github/workflows/release.yml … タグ push で zip 化・Release・index.json 更新
 tools/make_index.py           … index.json を作る/更新する
-docs/module-guide.md          … 有料モジュールの作り方
+docs/module-guide.md          … モジュールの作り方
 ```
 
 ## 初回セットアップ手順
@@ -34,6 +34,6 @@ docs/module-guide.md          … 有料モジュールの作り方
 - 新しいタグ（例: `v0.1.1`）を push する
 - Actions が index.json に版を足し、VCC に更新が出る
 
-土台の更新は VCC から自動で届く。各モジュール（有料ユニパケ）は購入版で有効化される。
+土台の更新は VCC から自動で届く。各モジュール（ユニパケ）を入れると有効化される。
 
 MIT License.

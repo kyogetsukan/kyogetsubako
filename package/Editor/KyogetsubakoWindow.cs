@@ -9,7 +9,7 @@ namespace Kyogetsukan.Kyogetsubako
     /// <summary>
     /// 境月箱 本体（UI Toolkit）。プロジェクト内の IKyogetsukanModule 実装を拾い、
     /// 左：モジュール一覧／右：選択中モジュールの中身、で表示する。
-    /// モジュール（有料ユニパケ）が無ければ空状態になる。
+    /// モジュール（ユニパケ）が無ければ空状態になる。
     /// </summary>
     public class KyogetsubakoWindow : EditorWindow
     {
@@ -80,7 +80,7 @@ namespace Kyogetsukan.Kyogetsubako
             var sh = new Label("導入済みモジュール"); sh.style.fontSize = 11; sh.style.color = C("#6f7887"); sh.style.marginBottom = 6; sh.style.marginLeft = 6;
             side.Add(sh);
             _sidebarList = new VisualElement(); _sidebarList.style.flexGrow = 1; side.Add(_sidebarList);
-            var hint = new Label("有料ユニパケを取り込むと、ここに自動で並びます。");
+            var hint = new Label("対応モジュールを取り込むと、ここに自動で並びます。");
             hint.style.fontSize = 11; hint.style.color = C("#5c6572"); hint.style.whiteSpace = WhiteSpace.Normal;
             hint.style.marginTop = 8; hint.style.paddingTop = 8; hint.style.borderTopWidth = 1; hint.style.borderTopColor = LINE;
             side.Add(hint);
@@ -96,7 +96,7 @@ namespace Kyogetsukan.Kyogetsubako
             foot.style.borderTopWidth = 1; foot.style.borderTopColor = LINE;
             var f1 = new Label("境月箱"); f1.style.fontSize = 11; f1.style.color = C("#6f7887"); foot.Add(f1);
             var fsp = new VisualElement(); fsp.style.flexGrow = 1; foot.Add(fsp);
-            var f2 = new Label("土台の更新はVCCから自動で届きます／各モジュールは購入版で有効化");
+            var f2 = new Label("土台の更新はVCCから自動で届きます／モジュールを入れると使えます");
             f2.style.fontSize = 11; f2.style.color = C("#6f7887"); foot.Add(f2);
             root.Add(foot);
 
@@ -140,7 +140,7 @@ namespace Kyogetsukan.Kyogetsubako
             _detail.Clear();
             if (_modules.Count == 0)
             {
-                var box = new Label("導入済みのモジュールがありません。\n有料モジュール（ユニパケ）を取り込むと、ここに表示されます。");
+                var box = new Label("導入済みのモジュールがありません。\n対応モジュール（ユニパケ）を取り込むと、ここに表示されます。");
                 box.style.whiteSpace = WhiteSpace.Normal; box.style.fontSize = 13; box.style.color = SUB;
                 _detail.Add(box);
                 return;
@@ -161,7 +161,7 @@ namespace Kyogetsukan.Kyogetsubako
             var imgui = new IMGUIContainer(() => { try { m.Draw(); } catch (Exception e) { EditorGUILayout.HelpBox(e.Message, MessageType.Error); } });
             panel.Add(imgui); _detail.Add(panel);
 
-            var by = new Label("この機能はモジュール「" + m.Title + "」（有料）が提供しています。");
+            var by = new Label("この機能はモジュール「" + m.Title + "」が提供しています。");
             by.style.fontSize = 11; by.style.color = C("#6f7887"); by.style.marginTop = 12; _detail.Add(by);
         }
 

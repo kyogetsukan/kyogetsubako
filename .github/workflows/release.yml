@@ -1,0 +1,56 @@
+# タグ v0.1.0 を push すると:
+#   1. package/ を zip にする
+#   2. GitHub Release に zip を添付
+#   3. gh-pages ブランチの index.json に版を追加（= VCC に更新が出る）
+# 境月箱はUnityのC#スクリプトだけなのでビルド工程は無し。
+name: release
+on:
+  push:
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Read version
+        id: ver
+        run: |
+          v=$(python -c "import json;print(json.load(open('package/package.json'))['version'])")
+          n=$(python -c "import json;print(json.load(open('package/package.json'))['name'])")
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          echo "name=$n" >> "$GITHUB_OUTPUT"
+
+      - name: Zip package
+        run: |
+          ZIP="${{ steps.ver.outputs.name }}-${{ steps.ver.outputs.version }}.zip"
+          cd package && zip -r "../$ZIP" . -x '*.DS_Store' && cd ..
+          echo "ZIP=$ZIP" >> "$GITHUB_ENV"
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP }}
+          tag_name: ${{ github.ref_name }}
+
+      - name: Update index.json on gh-pages
+        run: |
+          url="https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${{ env.ZIP }}"
+          git fetch origin gh-pages:gh-pages || git branch gh-pages
+          git worktree add ../pages gh-pages
+          python tools/make_index.py package/package.json "$url" ../pages/index.json
+          cd ../pages
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add index.json
+          git commit -m "index: ${{ steps.ver.outputs.name }} ${{ steps.ver.outputs.version }}"
+          git push origin gh-pages
