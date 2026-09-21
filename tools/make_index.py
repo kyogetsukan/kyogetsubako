@@ -16,7 +16,7 @@ if out.exists():
     index = json.load(open(out, encoding="utf-8"))
 else:
     index = {
-        "name": "境月館 VPM Repository",
+        "name": "境月館 VPM Repository（境月箱）",
         "id": "jp.kyogetsukan.vpm.kyogetsubako",
         "author": "境月館",
         "url": "https://kyogetsukan.github.io/kyogetsubako/index.json",
