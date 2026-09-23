@@ -47,6 +47,14 @@ namespace Kyogetsukan.Kyogetsubako
             style.borderBottomLeftRadius = 4;
             style.borderBottomRightRadius = 4;
 
+            // 「境月箱」の3文字で折り返さないように、行を1本に固定して幅の方に逃がす
+            style.whiteSpace = WhiteSpace.NoWrap;
+            style.fontSize = 11;
+            style.paddingLeft = 4;
+            style.paddingRight = 4;
+            style.height = new StyleLength(StyleKeyword.Auto);
+            style.flexShrink = 0;
+
             // 右上に出す赤ポチ。普段は隠しておく。
             _dot = new VisualElement();
             _dot.style.position = Position.Absolute;
