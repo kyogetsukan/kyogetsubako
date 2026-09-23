@@ -1,11 +1,14 @@
 {
   "name": "jp.kyogetsukan.kyogetsubako",
   "displayName": "kyogetsukan kyogetsubako",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "unity": "2022.3",
   "description": "境月箱｜境月館のツールを、これ一つに。境月館の各ツール（モジュール）を載せて呼び出す無料の土台です。対応モジュール（ユニパケ）を取り込むと自動で一覧に並びます。土台の更新はVCCから自動で届きます。",
-  "author": { "name": "境月館", "url": "https://kyogetsukan.booth.pm/" },
-  "url": "https://github.com/kyogetsukan/kyogetsubako/releases/download/v0.1.1/jp.kyogetsukan.kyogetsubako-0.1.1.zip",
+  "author": {
+    "name": "境月館",
+    "url": "https://kyogetsukan.booth.pm/"
+  },
+  "url": "https://github.com/kyogetsukan/kyogetsubako/releases/download/v0.1.2/jp.kyogetsukan.kyogetsubako-0.1.2.zip",
   "license": "MIT",
   "vpmDependencies": {},
   "legacyFolders": {},
